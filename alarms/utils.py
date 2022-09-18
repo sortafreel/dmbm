@@ -40,32 +40,32 @@ REGION_NAMES = {
 }
 
 MATCH_MAP_NAMES = {
-    'Vinnytsia region': 'Vinnytska',
-    'Zhytomyr region': 'Zhytomyrska',
-    'Kirovohrad region': 'Kirovohradska',
-    'Ivano-Frankivsk region': 'Ivano-Frankivska',
-    'Lviv region': 'Lvivska',
-    'Rivne region': 'Rivnenska',
-    'Volyn region': 'Volynska',
-    'Kyiv region': 'Kyivska',
-    'Ternopil region': 'Ternopilska',
-    'Chernihiv region': 'Chernihivska',
-    'Dnipropetrovsk region': 'Dnipropetrovska',
-    'Kharkiv region': 'Kharkivska',
-    'Khmelnytskyi region': 'Khmelnytska',
-    'Cherkasy region': 'Cherkaska',
-    'Odesa region': 'Odeska',
-    'Zaporizhzhia region': 'Zaporizka',
-    'Chernivtsi region': 'Chernivetska',
-    'Transcarpathian region': 'Zakarpatska',
-    'Sumy region': 'Sumska',
-    'Poltava region': 'Poltavska',
-    'Mykolaiv region': 'Mykolaivska',
-    'Donetsk region': 'Donetska',
-    'Luhansk region': 'Luhanska',
-    'Kherson region': 'Khersonska',
-    'Crimea': 'Avtonomna Respublika Krym',
-    'Sevastopol region': 'Sevastopilska'
+    "Vinnytsia region": "Vinnytska",
+    "Zhytomyr region": "Zhytomyrska",
+    "Kirovohrad region": "Kirovohradska",
+    "Ivano-Frankivsk region": "Ivano-Frankivska",
+    "Lviv region": "Lvivska",
+    "Rivne region": "Rivnenska",
+    "Volyn region": "Volynska",
+    "Kyiv region": "Kyivska",
+    "Ternopil region": "Ternopilska",
+    "Chernihiv region": "Chernihivska",
+    "Dnipropetrovsk region": "Dnipropetrovska",
+    "Kharkiv region": "Kharkivska",
+    "Khmelnytskyi region": "Khmelnytska",
+    "Cherkasy region": "Cherkaska",
+    "Odesa region": "Odeska",
+    "Zaporizhzhia region": "Zaporizka",
+    "Chernivtsi region": "Chernivetska",
+    "Transcarpathian region": "Zakarpatska",
+    "Sumy region": "Sumska",
+    "Poltava region": "Poltavska",
+    "Mykolaiv region": "Mykolaivska",
+    "Donetsk region": "Donetska",
+    "Luhansk region": "Luhanska",
+    "Kherson region": "Khersonska",
+    "Crimea": "Avtonomna Respublika Krym",
+    "Sevastopol region": "Sevastopilska",
 }
 
 
@@ -87,7 +87,7 @@ def size_plot(plot_len: int, plot_count: int = 1) -> Tuple[int, int]:
 
 
 def color_plot_adaptive(
-        plot_column: Series, first_hex: str, last_hex: str
+    plot_column: Series, first_hex: str, last_hex: str
 ) -> List[str]:
     """
     Color the plot. Same values should have the same color.
@@ -121,23 +121,23 @@ def color_plot_adaptive(
 
 
 def create_plot(
-        plot_df: pd.DataFrame,
-        plot_x: str,
-        plot_y: str,
-        first_hex: str,
-        last_hex: str,
-        sort_plot: bool = False,
-        plot_title: Optional[str] = None,
-        y_label: str = "",
-        x_label: str = "",
-        plot_count: int = 1,
-        results_limit: bool = False,
-        save: bool = False,
-        animate: bool = False,
-        animation_duration: float = 1.0,
-        animation_fps: int = 60,
-        plot_color_column: Optional[str] = None,
-        plot_color_column_label: Optional[str] = None
+    plot_df: pd.DataFrame,
+    plot_x: str,
+    plot_y: str,
+    first_hex: str,
+    last_hex: str,
+    sort_plot: bool = False,
+    plot_title: Optional[str] = None,
+    y_label: str = "",
+    x_label: str = "",
+    plot_count: int = 1,
+    results_limit: bool = False,
+    save: bool = False,
+    animate: bool = False,
+    animation_duration: float = 1.0,
+    animation_fps: int = 60,
+    plot_color_column: Optional[str] = None,
+    plot_color_column_label: Optional[str] = None,
 ) -> None:
     # If title is not defined - use the y-column name
     if plot_title is None:
@@ -178,7 +178,10 @@ def create_plot(
     # Process colors and the legend
     if plot_color_column is not None and plot_color_column_label is not None:
         import matplotlib.patches as mpatches
-        plot_colors = color_plot_adaptive(plot_data[plot_color_column], first_hex, last_hex)
+
+        plot_colors = color_plot_adaptive(
+            plot_data[plot_color_column], first_hex, last_hex
+        )
         red_patch = mpatches.Patch(color=last_hex, label=plot_color_column_label)
         axes.legend(handles=[red_patch], loc=4)
     else:
@@ -216,10 +219,10 @@ def create_plot(
 
 
 def calculate_animation_steps(
-        ar_names: List[Any],
-        ar_values: List[int],
-        animation_duration: float,
-        animation_fps: int,
+    ar_names: List[Any],
+    ar_values: List[int],
+    animation_duration: float,
+    animation_fps: int,
 ) -> List[List[Union[Any, int]]]:
     steps = []
 
@@ -275,9 +278,17 @@ def generate_sleep_periods() -> Dict[int, Dict[str, Union[List, int]]]:
     for i in range(24):
         period = [x if x < 24 else x - 24 for x in range(i, i + 9)]
         if i == 0:
-            sleep_periods[24] = {"affected_hours": period, "alerts_per_sleep_period": 0, "hours_per_sleep_period": 0}
+            sleep_periods[24] = {
+                "affected_hours": period,
+                "alerts_per_sleep_period": 0,
+                "hours_per_sleep_period": 0,
+            }
             continue
-        sleep_periods[i] = {"affected_hours": period, "alerts_per_sleep_period": 0, "hours_per_sleep_period": 0}
+        sleep_periods[i] = {
+            "affected_hours": period,
+            "alerts_per_sleep_period": 0,
+            "hours_per_sleep_period": 0,
+        }
     return sleep_periods
 
 
