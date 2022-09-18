@@ -1,1 +1,1 @@
-![teaser](alarms/images/teaser.png "Teaser").
+![teaser](alarms/images/teaser.png "Teaser")
